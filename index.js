@@ -12,7 +12,12 @@ const PORT = 3000;
 
 mongoose.connect('mongodb://localhost:27017/shop', { useNewUrlParser: true, useCreateIndex: true });
 
-const Product = mongoose.model('Product', { name: String });
+const Product = mongoose.model('Product', {
+  name: String,
+  description: String,
+  price: Number,
+  qty: Number,
+});
 
 const server = new ApolloServer({ typeDefs, resolvers, context: Product });
 server.applyMiddleware({ app });

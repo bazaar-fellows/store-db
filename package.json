@@ -30,6 +30,7 @@
     "express": "^4.16.4",
     "graphql": "^14.1.1",
     "graphql-tools": "^4.0.4",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.4.15",
     "nodemon": "^1.18.10"
   }
