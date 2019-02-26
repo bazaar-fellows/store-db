@@ -2,22 +2,39 @@ import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
 
+
+type Product {
+  _id: String!
+  name: String!
+  description: String!
+  price: Float!
+  qty: Int!
+  category: Category
+  categoryId: Category
+}
+
 type Category {
   _id: String!
   name: String!
   product: [Product]
 }
 
-type Product {
+type OrderItem {
   _id: String!
-  description: String!
-  name: String!
   qty: Int!
-  price: Float!
-  categoryId: Category
-  category: Category
+  productId: String!
+  orderId: String
 }
 
+
+type OrderList {
+  _id: String!
+  timeStamp: String 
+  shipping: String
+  shippingId: String
+  status: String
+  items: [OrderItem]
+}
 
 
 input ProductInput {
@@ -34,6 +51,7 @@ type Query {
   getProduct(_id: String): Product!
   getAllCategories: [Category!]
   getCategory(_id: String): Category!
+  getProductsByCategory(category: String): [Product]
 }
 
 type Mutation {

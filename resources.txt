@@ -1,0 +1,23 @@
+Add a product
+
+mutation{
+  createProduct(input: {
+    name: "Adidas",
+    description: "Sambas",
+    price: 60,
+    qty: 10,
+    category: "5c748fbe240877650da919a1",
+  }
+
+  ){
+    _id
+    name
+    description
+    price
+    qty
+    category { 
+      _id
+      name
+    }
+  }
+}
