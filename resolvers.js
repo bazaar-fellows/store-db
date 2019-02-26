@@ -44,7 +44,6 @@ export default {
     getCategory: (i, _id) => Category.findOne(_id),
 
     getProductsByCategory: (_, category) => {
-      console.log('categoryid', category);
       const product = Product.find(category);
       return product;
     },
