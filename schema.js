@@ -21,8 +21,8 @@ type Category {
 
 type OrderItem {
   _id: String!
-  qty: Int!
   productId: String!
+  qty: Int!
   orderId: String
 }
 
@@ -35,6 +35,11 @@ type OrderList {
   status: String
   items: [OrderItem]
 }
+input OrderItemInput {
+  productId: String!
+  qty: Int!
+  orderId: String!
+}
 
 
 input ProductInput {
@@ -45,6 +50,12 @@ input ProductInput {
   category: String
   categoryId: String
 }
+input OrderListInput {
+  timeStamp: String 
+  shipping: String
+  shippingId: String
+  status: String
+}
 
 type Query {
   getAllProducts: [Product!]
@@ -52,15 +63,26 @@ type Query {
   getAllCategories: [Category!]
   getCategory(_id: String): Category!
   getProductsByCategory(category: String): [Product]
+  getAllOrderItems: [OrderItem!]
+  getOrderItem(_id: String): OrderItem!
+  getAllOrderLists: [OrderList!]
+  getOrderList(_id: String): OrderList!
 }
 
 type Mutation {
   createProduct(input: ProductInput): Product!
   createCategory(name: String!): Category!
+  createOrderItem(input: OrderItemInput): OrderItem!
+  createOrderList(input: OrderListInput ): OrderList!
   deleteProduct(_id: String!): [Product!]
   deleteCategory(_id: String!): [Category!]
+  deleteOrderItem(_id: String!): [OrderItem!]
+  deleteOrderList(_id: String!): [OrderList!]
   updateProduct(_id: ID!, input: ProductInput): Product!
   updateCategory(_id: ID!, name: String!): Category!
+  updateOrderItem(_id: ID!, input: OrderItemInput): OrderItem!
+  updateOrderList(_id: ID!, input: OrderListInput): OrderList!
+  
 
 }`;
 

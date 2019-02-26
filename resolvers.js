@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-cycle
-import { Product, Category } from './index';
+import {
+  Product, Category, OrderItem, OrderList,
+} from './index';
 
 
 export default {
@@ -28,13 +30,32 @@ export default {
       return newRecord.save();
     },
 
+    createOrderItem: (_, { input }) => {
+      const newRecord = new OrderItem(input);
+      return newRecord.save();
+    },
+
+    createOrderList: (_, { input }) => {
+      const newRecord = new OrderList(input);
+      return newRecord.save();
+    },
+
     deleteProduct: (_, _id) => Product.findByIdAndDelete(_id),
 
     deleteCategory: (_, _id) => Category.findByIdAndDelete(_id),
 
+    deleteOrderItem: (_, _id) => OrderItem.findByIdAndDelete(_id),
+
+    deleteOrderList: (_, _id) => OrderList.findByIdAndDelete(_id),
+
     updateProduct: (_, { _id, input }) => Product.findOneAndUpdate({ _id }, input, { new: true }),
 
     updateCategory: (_, { _id, input }) => Category.findOneAndUpdate({ _id }, input, { new: true }),
+
+    updateOrderItem: (_, { _id, input }) => OrderItem.findOneAndUpdate({ _id }, input, { new: true }),
+
+    updateOrderList: (_, { _id, input }) => OrderList.findOneAndUpdate({ _id }, input, { new: true }),
+
   },
 
   Query: {
@@ -42,12 +63,20 @@ export default {
     getProduct: (i, _id) => Product.findOne(_id),
     getAllCategories: () => Category.find({}),
     getCategory: (i, _id) => Category.findOne(_id),
+    getAllOrderItems: () => OrderItem.find({}),
+    getOrderItem: (i, _id) => OrderItem.find(_id),
+    getAllOrderLists: () => OrderList.find({}),
+    getOrderList: (i, _id) => OrderList.find(_id),
 
     getProductsByCategory: (_, category) => {
       console.log('categoryid', category);
       const product = Product.find(category);
       return product;
     },
+
+    // getOrderListItems: (_, listId) => {
+    //   console.log(list)
+    // }
 
 
   },
