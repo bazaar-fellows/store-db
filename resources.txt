@@ -1,23 +1,28 @@
 Add a product
 
+/////CREATE A PRODUCT AND ADD IT TO CATEGORY BY ID //////
+
 mutation{
   createProduct(input: {
-    name: "Adidas",
-    description: "Sambas",
-    price: 60,
-    qty: 10,
-    category: "5c748fbe240877650da919a1",
-  }
-
-  ){
-    _id
+name: "Crocs", 
+description: "hot", 
+price: 30,
+qty: 10,
+category: "5c748fbe240877650da919a1"
+}){
+  name 
+  category {
     name
-    description
-    price
-    qty
-    category { 
-      _id
-      name
-    }
+
+ 	 }
+	}
+}
+
+///// GET ALL PRODUCTS BY CATEGORY ID //////////
+
+query{
+  getProductsByCategory(category: "5c748fbe240877650da919a1"){
+	name
+  _id
   }
 }
