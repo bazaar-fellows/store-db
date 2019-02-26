@@ -35,12 +35,12 @@ type OrderList {
   status: String
   items: [OrderItem]
 }
+
 input OrderItemInput {
   productId: String!
   qty: Int!
   orderId: String!
 }
-
 
 input ProductInput {
   description: String
@@ -50,6 +50,7 @@ input ProductInput {
   category: String
   categoryId: String
 }
+
 input OrderListInput {
   timeStamp: String 
   shipping: String
@@ -67,6 +68,7 @@ type Query {
   getOrderItem(_id: String): OrderItem!
   getAllOrderLists: [OrderList!]
   getOrderList(_id: String): OrderList!
+  getItemsByOrder(orderId: String): [OrderItem!]
 }
 
 type Mutation {

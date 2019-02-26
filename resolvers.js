@@ -74,9 +74,10 @@ export default {
       return product;
     },
 
-    // getOrderListItems: (_, listId) => {
-    //   console.log(list)
-    // }
+    getItemsByOrder: (_, orderId) => {
+      const item = OrderItem.find(orderId);
+      return item;
+    },
 
 
   },
