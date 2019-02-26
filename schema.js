@@ -46,6 +46,10 @@ input ProductInput {
   categoryId: String
 }
 
+input CategoryInput {
+  name: String
+}
+
 type Query {
   getAllProducts: [Product!]
   getProduct(_id: String): Product!
@@ -60,7 +64,7 @@ type Mutation {
   deleteProduct(_id: String!): [Product!]
   deleteCategory(_id: String!): [Category!]
   updateProduct(_id: ID!, input: ProductInput): Product!
-  updateCategory(_id: ID!, name: String!): Category!
+  updateCategory(_id: ID!, input: CategoryInput): Category!
 
 }`;
 

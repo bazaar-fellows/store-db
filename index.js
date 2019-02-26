@@ -41,6 +41,12 @@ export const OrderList = mongoose.model('OrderList', {
 });
 
 
-const server = new ApolloServer({ typeDefs, resolvers, context: { Product, Category } });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: {
+    Product, Category, OrderItem, OrderList,
+  },
+});
 server.applyMiddleware({ app });
 app.listen(PORT);
