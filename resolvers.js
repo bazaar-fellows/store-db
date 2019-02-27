@@ -69,7 +69,6 @@ export default {
     getOrderList: (i, _id) => OrderList.find(_id),
 
     getProductsByCategory: (_, category) => {
-      console.log('categoryid', category);
       const product = Product.find(category);
       return product;
     },

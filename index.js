@@ -1,16 +1,17 @@
 import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
 import mongoose from 'mongoose';
-import resolvers from './resolvers';
+
+const { ApolloServer } = require('apollo-server-express');
+const resolvers = require('./resolvers');
 
 const typeDefs = require('./schema');
 
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const mongo = process.env.MONGODB_URI || 'mongodb://localhost:27017/shop';
 
-
-mongoose.connect('mongodb://localhost:27017/shop', { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(mongo, { useNewUrlParser: true, useCreateIndex: true });
 
 export const Product = mongoose.model('Product', {
   name: String,
@@ -41,6 +42,12 @@ export const OrderList = mongoose.model('OrderList', {
 });
 
 
-const server = new ApolloServer({ typeDefs, resolvers, context: { Product, Category } });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: {
+    Product, Category, OrderItem, OrderList,
+  },
+});
 server.applyMiddleware({ app });
 app.listen(PORT);

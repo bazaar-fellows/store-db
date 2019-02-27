@@ -51,11 +51,8 @@ input ProductInput {
   categoryId: String
 }
 
-input OrderListInput {
-  timeStamp: String 
-  shipping: String
-  shippingId: String
-  status: String
+input CategoryInput {
+  name: String
 }
 
 type Query {
@@ -85,6 +82,7 @@ type Mutation {
   updateOrderItem(_id: ID!, input: OrderItemInput): OrderItem!
   updateOrderList(_id: ID!, input: OrderListInput): OrderList!
   
+
 
 }`;
 

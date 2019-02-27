@@ -1,28 +1,175 @@
 Add a product
 
-/////CREATE A PRODUCT AND ADD IT TO CATEGORY BY ID //////
+███╗   ███╗██╗   ██╗████████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗███████╗
+████╗ ████║██║   ██║╚══██╔══╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
+██╔████╔██║██║   ██║   ██║   ███████║   ██║   ██║██║   ██║██╔██╗ ██║███████╗
+██║╚██╔╝██║██║   ██║   ██║   ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║
+██║ ╚═╝ ██║╚██████╔╝   ██║   ██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║███████║
+╚═╝     ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+         
+
+/////     CREATE A PRODUCT      //////////
+**     Join a category by category id   **
 
 mutation{
   createProduct(input: {
-name: "Crocs", 
-description: "hot", 
-price: 30,
-qty: 10,
-category: "5c748fbe240877650da919a1"
-}){
+    name: "Crocs", 
+    description: "hot", 
+    price: 30,
+    qty: 10,
+    category: "5c748fbe240877650da919a1"
+    }){
   name 
+  description
+  price
+  qty
   category {
+    _id
     name
-
  	 }
 	}
 }
 
-///// GET ALL PRODUCTS BY CATEGORY ID //////////
+//////////    CREATE A CATEGORY     //////////
+mutation{
+  createCategory( name: "Shoes" ){
+    _id
+    name
+  }
+}
 
+/////////     DELETE A PRODUCT     \\\\\\\\\\\
+mutation{
+  deleteProduct(_id: " product id "){
+    name
+  }
+}
+
+/////////     DELETE A CATEGORY     \\\\\\\\\\\
+mutation{
+  deleteCategory(_id: " category id "){
+    name
+  }
+}
+
+/////////     UPDATE A CATEGORY     \\\\\\\\\\\
+mutation{
+  updateCategory(_id: " cateogory id ", input: { name: "newName" }){
+    _id
+    name
+  }
+}
+
+/////////     UPDATE A PRODUCT     \\\\\\\\\\\\
+mutation{
+  updateProduct(_id: " product id ", input: { name: "newName", price: "newPrice" }){
+  name 
+  description
+  price
+  qty
+  category {
+    _id
+    name
+ 	 }
+  }
+}
+
+
+
+
+ ██████╗ ██╗   ██╗███████╗██████╗ ██╗   ██╗
+██╔═══██╗██║   ██║██╔════╝██╔══██╗╚██╗ ██╔╝
+██║   ██║██║   ██║█████╗  ██████╔╝ ╚████╔╝ 
+██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗  ╚██╔╝  
+╚██████╔╝╚██████╔╝███████╗██║  ██║   ██║   
+ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   
+                                           
+////////    getAllProducts    \\\\\\\\\\\
 query{
-  getProductsByCategory(category: "5c748fbe240877650da919a1"){
+  getAllProducts{
+    _id
+    name
+    description
+    price
+    category { 
+      name
+      _id
+    }
+  }
+}
+
+////////    getProduct    \\\\\\\\\\\
+query{
+  getProduct(_id: " product id "){
+    _id
+    name
+    description
+    price
+    category { 
+      name
+      _id 
+    }
+  }
+}
+
+////////    getAllCategories    \\\\\\\\\\\
+query{
+  getAllCategories{
+    _id
+    name
+  }
+}
+
+////////      getCategory      \\\\\\\\\\\
+query{
+  getCategory(_id: " category id " ){
+    _id 
+    name
+  }
+}
+
+////////    getProductsByCategory    \\\\\\\\\\\
+query{
+  getProductsByCategory(category: " category id "){
 	name
   _id
   }
 }
+
+
+ /$$$$$$$                      /$$      
+| $$__  $$                    | $$      
+| $$  \ $$  /$$$$$$  /$$$$$$$ | $$   /$$
+| $$$$$$$  |____  $$| $$__  $$| $$  /$$/
+| $$__  $$  /$$$$$$$| $$  \ $$| $$$$$$/ 
+| $$  \ $$ /$$__  $$| $$  | $$| $$_  $$ 
+| $$$$$$$/|  $$$$$$$| $$  | $$| $$ \  $$
+|_______/  \_______/|__/  |__/|__/  \__/
+                                        
+                                       
+
+CATEGORY IDS
+--------------------------------------
+   "_id": "5c75c75f7f8e2b11d46bf2ea",
+  "name": "Shoes"
+--------------------------------------
+     "_id": "5c75c7957f8e2b11d46bf2eb",
+      "name": "Pants"
+--------------------------------------
+      "_id": "5c75c7bc7f8e2b11d46bf2ec",
+      "name": "Knits"
+--------------------------------------
+      "_id": "5c75c7ca7f8e2b11d46bf2ed",
+      "name": "Dresses"
+--------------------------------------
+
+
+
+PRODUCT IDS
+----------------------------------------
+      "_id": "5c75c83f7f8e2b11d46bf2ef",
+      "name": "Adidas",
+----------------------------------------
+      "_id": "5c75c8747f8e2b11d46bf2f0",
+      "name": "Pumas",
+
