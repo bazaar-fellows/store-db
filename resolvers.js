@@ -2,7 +2,7 @@
 import { Product, Category } from './index';
 
 
-export default {
+const resolver = {
 
   Category: {
     product: async ({ _id }) => Product.find({ categoryId: _id }).toArray(),
@@ -12,7 +12,6 @@ export default {
     category: async (productid) => {
       // eslint-disable-next-line no-underscore-dangle
       const _id = productid.category;
-      console.log(_id);
       return Category.findOne({ _id });
     },
   },
@@ -42,7 +41,6 @@ export default {
     getProduct: (i, _id) => Product.findOne(_id),
     getAllCategories: () => Category.find({}),
     getCategory: (i, _id) => Category.findOne(_id),
-
     getProductsByCategory: (_, category) => {
       const product = Product.find(category);
       return product;
@@ -51,3 +49,5 @@ export default {
 
   },
 };
+
+module.exports = resolver;
