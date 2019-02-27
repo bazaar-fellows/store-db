@@ -8,7 +8,7 @@ const typeDefs = require('./schema');
 
 
 const app = express();
-const port = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 const mongo = process.env.MONGODB_URI || 'mongodb://localhost:27017/shop';
 
 mongoose.connect(mongo, { useNewUrlParser: true, useCreateIndex: true });
@@ -50,4 +50,4 @@ const server = new ApolloServer({
   },
 });
 server.applyMiddleware({ app });
-app.listen(port);
+app.listen(PORT);
