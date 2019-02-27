@@ -48,6 +48,8 @@ const server = new ApolloServer({
   context: {
     Product, Category, OrderItem, OrderList,
   },
+  introspection: true,
+  playground: true,
 });
 server.applyMiddleware({ app });
 app.listen(PORT);
