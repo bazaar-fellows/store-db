@@ -7,10 +7,10 @@ const typeDefs = require('./schema');
 
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const mongo = process.env.MONGODB_URI || 'mongodb://localhost:27017/shop';
 
-
-mongoose.connect('mongodb://localhost:27017/shop', { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(mongo, { useNewUrlParser: true, useCreateIndex: true });
 
 export const Product = mongoose.model('Product', {
   name: String,
