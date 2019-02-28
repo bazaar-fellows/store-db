@@ -43,7 +43,7 @@ input ProductInput {
   qty: Int!
   price: Float!
   category: String!
-  categoryId: String
+  categoryId: String!
 }
 
 input CategoryInput {
