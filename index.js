@@ -18,7 +18,6 @@ export const Product = mongoose.model('Product', {
   description: String,
   price: Number,
   qty: Number,
-  boogers: String,
   category: String,
 });
 
