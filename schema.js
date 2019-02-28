@@ -38,12 +38,12 @@ type OrderList {
 
 
 input ProductInput {
-  description: String
-  name: String
-  qty: Int
-  price: Float
-  category: String
-  categoryId: String
+  description: String!
+  name: String!
+  qty: Int!
+  price: Float!
+  category: String!
+  categoryId: String!
 }
 
 input CategoryInput {
