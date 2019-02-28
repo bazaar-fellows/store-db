@@ -9,7 +9,7 @@ type Product {
   description: String!
   price: Float!
   qty: Int!
-  url: String!
+  image_url: String!
   category: Category
   categoryId: Category
 }
@@ -43,7 +43,7 @@ input ProductInput {
   name: String!
   qty: Int!
   price: Float!
-  url: String!
+  image_url: String!
   category: String!
   categoryId: String
 }
