@@ -19,7 +19,7 @@
   "homepage": "https://github.com/bazaar-fellows/store-db#readme",
   "dependencies": {
     "apollo-server": "^2.4.6",
-    "apollo-server-express": "^2.4.6",
+    "apollo-server-express": "^2.14.2",
     "babel-cli": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
